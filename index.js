@@ -39,7 +39,7 @@ module.exports = function (file, opts) {
         if (typeof opts.replace[i].from === "undefined")
             throw new Error("configuration entry \"replace[" + i + "].from\" not defined");
         if (!(typeof opts.replace[i].from === "object" && opts.replace[i].from instanceof RegExp))
-            opts.replace[i].from = new RegExp(opts.replace[i].from);
+            opts.replace[i].from = new RegExp(opts.replace[i].from, 'g');
         if (typeof opts.replace[i].to === "undefined")
             throw new Error("configuration entry \"replace[" + i + "].to\" not defined");
         if (!(typeof opts.replace[i].to === "string"))
@@ -60,4 +60,3 @@ module.exports = function (file, opts) {
         next();
     });
 };
-
